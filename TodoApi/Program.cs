@@ -19,11 +19,11 @@ builder.Services.AddDbContext<ToDoDbContext>(options =>
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
+// if (app.Environment.IsDevelopment())
+// {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+// }
 app.UseCors("AllowReactApp");
 
 app.MapGet("/", async (ToDoDbContext context) =>
@@ -68,5 +68,6 @@ app.MapDelete("/tasks/{id}", async (int id, ToDoDbContext context) =>
     }
     return Results.NotFound();
 });
+
 
 app.Run();
